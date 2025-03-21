@@ -1,0 +1,534 @@
+/* =========================
+   GENERAL RESET & BASE
+   ========================= */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: Arial, sans-serif; /* Replace with your chosen font */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+  }
+  
+  /* Utility Classes */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    background-color: #0052cc; /* Primary color */
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+  }
+  .btn:hover {
+    opacity: 0.9;
+  }
+  .btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background-color: #0052cc;
+    color: #fff;
+    border-radius: 4px;
+  }
+  .link-more {
+    color: #0052cc;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .link-more:hover {
+    text-decoration: underline;
+  }
+  
+  /* =========================
+     SINGLE-BAR HEADER STYLES
+     ========================= */
+  .main-header {
+    display: flex;
+    align-items: center;
+    height: 134px;         /* Adjust as needed for your desired bar height */
+    background-color: #fff;  /* White background for the main bar */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* LEFT: BLUE LOGO AREA */
+  .brand {
+    background-color: #ffffff; /* CEID-like red */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;   /* Controls how wide the red block is */
+    height: 100%;   /* Fill the header's full height */
+  }
+  .brand .logo img {
+    max-height: 110px;  /* Bigger logo */
+    width: auto;
+  }
+  
+  /* MIDDLE + RIGHT: NAV & ICONS */
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;          /* Takes up remaining space */
+    padding: 0 1rem;  /* Horizontal padding inside the white area */
+  }
+  
+  /* NAVIGATION (middle) */
+  .main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  .main-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .main-nav a:hover {
+    color: #1e8ccc;  /* Hover color matching the red */
+  }
+  .main-nav a.active {
+    color: #1e8ccc;
+    font-weight: 600;
+  }
+  
+  /* SOCIAL ICONS (optional, right side) */
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+  }
+  .social-icons img {
+    width: 44px;
+    height: 44px;
+  }
+  
+  /* =========================
+     HERO SECTION
+     ========================= */
+  .hero-section {
+    background: url('../images/layout/background2.png') center/cover no-repeat;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    position: relative;
+  }
+  .hero-section::after {
+    content: "";
+    background: rgba(0,0,0,0.4);
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-btn {
+    background-color: #ff7f50;
+  }
+  
+  /* =========================
+     ABOUT SECTION
+     ========================= */
+  .about-section {
+    background-color: #fff;
+    padding: 2rem 0;
+  }
+  .about-section h2 {
+    margin-bottom: 1rem;
+  }
+  
+  /* =========================
+     CATEGORIES SECTION
+     ========================= */
+  .categories-section {
+    padding: 2rem 0;
+    text-align: center;
+  }
+  .categories-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    margin-top: 2rem;
+  }
+  .category-card {
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 1rem;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    text-align: left;
+  }
+  .category-card img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+  .category-card h3 {
+    margin-bottom: 0.5rem;
+  }
+  .category-card p {
+    margin-bottom: 1rem;
+  }
+  
+  /* =========================
+     BENEFITS SECTION
+     ========================= */
+  .benefits-section {
+    background-color: #f2f2f2;
+    padding: 2rem 0;
+    text-align: center;
+  }
+  .benefits-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    margin-top: 2rem;
+  }
+  .benefit-item {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.04);
+  }
+  .benefit-item img {
+    width: 60px;
+    margin-bottom: 1rem;
+  }
+  .benefit-item h4 {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* =========================
+     NEWSLETTER SECTION
+     ========================= */
+  .newsletter-section {
+    padding: 2rem 0;
+    text-align: center;
+    background-color: #e8e8e8;
+  }
+  .newsletter-form {
+    margin-top: 1rem;
+    display: inline-flex;
+    gap: 0.5rem;
+  }
+  .newsletter-form input[type="email"] {
+    padding: 0.5rem;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* =========================
+     FOOTER
+     ========================= */
+  .main-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem 0;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+  .footer-col h4 {
+    margin-bottom: 0.75rem;
+  }
+  .footer-col p, .footer-col li, .footer-col a {
+    color: #ddd;
+    font-size: 0.95rem;
+  }
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+  }
+  .footer-col ul li {
+    margin-bottom: 0.5rem;
+  }
+  .footer-col ul li a:hover {
+    text-decoration: underline;
+  }
+  .footer-bottom {
+    text-align: center;
+    margin-top: 1.5rem;
+    border-top: 1px solid #555;
+    padding-top: 1rem;
+    font-size: 0.85rem;
+  }
+  
+  /* =========================
+     PAGE HERO (subpages)
+     ========================= */
+  .page-hero {
+    background-color: #0052cc;
+    color: #fff;
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+  
+  /* =========================
+     COURSE CATEGORIES PAGE
+     ========================= */
+  .course-categories {
+    padding: 2rem 0;
+  }
+  .categories-list {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .course-category {
+    background: #fff;
+    border-radius: 4px;
+    padding: 1rem;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  }
+  
+  /* =========================
+     INQUIRY SECTION
+     ========================= */
+  .inquiry-section {
+    padding: 2rem 0;
+    background-color: #e8e8e8;
+  }
+  .inquiry-form label {
+    display: block;
+    margin: 0.5rem 0 0.25rem;
+  }
+  .inquiry-form input,
+  .inquiry-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  /* =========================
+     CONTACT PAGE
+     ========================= */
+  .contact-page-section {
+    padding: 2rem 0;
+  }
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .contact-info h2, .contact-form-wrapper h2 {
+    margin-bottom: 1rem;
+  }
+  .contact-form label {
+    display: block;
+    margin: 0.5rem 0 0.25rem;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+  
+  /* =========================
+     RESPONSIVE ADJUSTMENTS
+     ========================= */
+  @media screen and (max-width: 768px) {
+    .main-header {
+      height: auto; /* Let header expand if items wrap */
+      flex-wrap: wrap;
+    }
+    .brand {
+      width: 100%;
+      justify-content: center;
+      height: auto;
+      padding: 0.5rem 0;
+    }
+    .header-container {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+    }
+    .main-nav ul {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .social-icons {
+      margin-top: 1rem;
+    }
+  
+    .contact-layout {
+      grid-template-columns: 1fr;
+    }
+    .benefits-grid,
+    .categories-grid,
+    .categories-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* =========================
+   ΕΚΔΟΣΕΙΣ SECTION (4 στήλες)
+   ========================= */
+.ekdoseis-section {
+  padding: 2rem 0;
+  text-align: center; /* Προαιρετικό: κεντράρισμα τίτλων κ.λπ. */
+}
+
+/* Το grid που εμφανίζει 4 στήλες σε μεγάλες οθόνες */
+.ekdoseis-grid {
+  display: grid;
+  gap: 1.5rem; /* απόσταση ανάμεσα στις κάρτες */
+  grid-template-columns: repeat(4, 1fr); /* 4 στήλες */
+  margin-top: 2rem;
+}
+
+/* Κάθε κάρτα βιβλίου */
+.publication-card {
+  background-color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  text-align: center; /* ή left, αν προτιμάς */
+  transition: transform 0.2s ease;
+}
+
+/* Hover effect (προαιρετικό) */
+.publication-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Εικόνα βιβλίου */
+.publication-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Τίτλος βιβλίου */
+.publication-card h3 {
+  margin: 0.75rem 0 0.5rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Περιγραφή/συγγραφέας κ.λπ. */
+.publication-card p {
+  margin: 0 1rem 0.75rem;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Κουμπί για περισσότερα */
+.publication-card .btn-sm {
+  margin-bottom: 1rem;
+  background-color: #0052cc; /* ή άλλο primary color */
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: inline-block;
+}
+.publication-card .btn-sm:hover {
+  opacity: 0.9;
+}
+
+/* =========================
+   RESPONSIVE ΓΙΑ ΕΚΔΟΣΕΙΣ
+   ========================= */
+/* Σε οθόνες περίπου <992px, 2 στήλες */
+@media screen and (max-width: 992px) {
+  .ekdoseis-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Σε πολύ μικρές οθόνες <576px, 1 στήλη */
+@media screen and (max-width: 576px) {
+  .ekdoseis-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ======= Carousel Style για ΕΚΔΟΣΕΙΣ======= */
+/* ======= Carousel Styles for Publication Cards (using dots) ======= */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  /* Maintain an aspect ratio, e.g., 4:3 */
+  height: 0;
+  padding-bottom: 75%;
+  margin-bottom: 1rem;
+}
+
+.carousel-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-image.active {
+  opacity: 1;
+}
+
+/* Dot Navigation */
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.carousel-dots .dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.carousel-dots .dot.active {
+  background-color: #fff;
+}

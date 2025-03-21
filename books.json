@@ -1,0 +1,22 @@
+[
+    {
+      "id": "1",
+      "title": "Ψηφιακή Λογική Σχεδίαση",
+      "description": "Άλγεβρα Boole και Λογικές Πύλες, εξηγήσεις, παραδείγματα και ασκήσεις.",
+      "images": [
+        "images/books/FUSIOLOGIA.jpg",
+        "images/books/fusiologia_periexomena.jpg"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Αλγόριθμοι Επικοινωνιών",
+      "description": "Προχωρημένες τεχνικές και εφαρμογές στα δίκτυα επικοινωνιών.",
+      "images": [
+        "images/algorithmi-epikoinonion1.jpg",
+        "images/algorithmi-epikoinonion2.jpg"
+      ]
+    }
+    
+  ]
+  
