@@ -8,24 +8,55 @@
 </head>
 <body>
 
-  <!-- Placeholder για κοινό header (αν χρησιμοποιείς) -->
+  <!-- Header placeholder, αν χρησιμοποιείς κοινό header -->
   <div id="header-placeholder"></div>
 
-  <!-- Κύριο Περιεχόμενο Βιβλίου -->
-  <main class="book-details container">
-    <div id="book-content">
-      <!-- Εδώ θα φορτώνονται δυναμικά τα δεδομένα του βιβλίου -->
+  <!-- Breadcrumb -->
+  <section class="breadcrumb">
+    <div class="container">
+      <a href="ekdoseis.html">Εκδόσεις</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="current" id="breadcrumbCurrent">Τίτλος Βιβλίου</span>
     </div>
-    
-  </main>
+  </section>
 
-  <!-- Placeholder για κοινό footer (αν χρησιμοποιείς) -->
+  <!-- Ενότητα Λεπτομερειών Βιβλίου με Δύο Στήλες -->
+  <section class="book-detail-section container">
+    <div class="book-layout">
+      <!-- Αριστερή Στήλη: Δύο υπο-στήλες (Ύλη & Περιεχόμενα) -->
+      <div class="book-left">
+        <h1 class="book-main-title" id="bookTitle">[Τίτλος Βιβλίου]</h1>
+        <p class="book-subtitle" id="bookSubtitle">[Υπότιτλος]</p>
+        <div class="col-lists">
+          <!-- Ύλη που Καλύπτεται -->
+          <div class="syllabus-col">
+            <h3>Ύλη που Καλύπτεται</h3>
+            <ul id="syllabusList">
+              <!-- Θα γεμίσει δυναμικά με <li> -->
+            </ul>
+          </div>
+          <!-- Περιεχόμενα Συγγράμματος -->
+          <div class="contents-col">
+            <h3>Περιεχόμενα Συγγράμματος</h3>
+            <ul id="contentsList">
+              <!-- Θα γεμίσει δυναμικά με <li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Δεξιά Στήλη: Εικόνα Βιβλίου -->
+      <div class="book-right">
+        <img id="bookImage" src="images/placeholder.jpg" alt="Εικόνα Βιβλίου">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer placeholder, αν χρησιμοποιείς κοινό footer -->
   <div id="footer-placeholder"></div>
 
-  <!-- Script για φόρτωση δεδομένων βιβλίου -->
+  <!-- Scripts -->
   <script src="js/book.js"></script>
-  <!-- Script για κοινά στοιχεία (header/footer) -->
   <script src="js/script.js"></script>
 </body>
 </html>
- 

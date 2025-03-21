@@ -1,73 +1,62 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Λήψη του query parameter "id" από το URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const bookId = urlParams.get('id');
-  
-    const bookContent = document.getElementById('book-content');
-  
-    if (!bookId) {
-      bookContent.innerHTML = '<p>Δεν επιλέχθηκε βιβλίο.</p>';
-      return;
-    }
-  
-    // Φόρτωση του αρχείου books.json (αν δεν χρησιμοποιείς server, χρησιμοποίησε έναν τοπικό server)
-    fetch('books.json')
-      .then(response => response.json())
-      .then(data => {
-        // Εύρεση του βιβλίου με το συγκεκριμένο id
-        const book = data.find(b => b.id === bookId);
-        if (!book) {
-          bookContent.innerHTML = '<p>Δεν βρέθηκε το βιβλίο.</p>';
-          return;
-        }
-        
-        // Δημιουργία HTML για την εμφάνιση των λεπτομερειών
-        let html = `<h1>${book.title}</h1>`;
-        
-        // Δημιουργία carousel με dots για τις εικόνες
-        if (book.images && book.images.length > 0) {
-          html += `<div class="carousel">`;
-          book.images.forEach((img, index) => {
-            html += `<img src="${img}" alt="${book.title} Εικόνα ${index + 1}" class="carousel-image ${index === 0 ? 'active' : ''}">`;
-          });
-          html += `<div class="carousel-dots">`;
-          book.images.forEach((_, index) => {
-            html += `<span class="dot ${index === 0 ? 'active' : ''}" data-index="${index}"></span>`;
-          });
-          html += `</div></div>`;
-        }
-        
-        // Εμφάνιση της περιγραφής του βιβλίου
-        html += `<div class="book-description"><p>${book.description}</p></div>`;
-        
-        bookContent.innerHTML = html;
-  
-        // Ενεργοποίηση του carousel (όπως στο προηγούμενο παράδειγμα με dots)
-        const carousel = document.querySelector('.carousel');
-        if (carousel) {
-          const images = carousel.querySelectorAll('.carousel-image');
-          const dots = carousel.querySelectorAll('.carousel-dots .dot');
-          let currentIndex = 0;
-          function showImage(index) {
-            images.forEach((img, i) => {
-              img.classList.toggle('active', i === index);
-            });
-            dots.forEach((dot, i) => {
-              dot.classList.toggle('active', i === index);
-            });
-          }
-          dots.forEach(dot => {
-            dot.addEventListener('click', function() {
-              const index = parseInt(dot.getAttribute('data-index'));
-              currentIndex = index;
-              showImage(currentIndex);
-            });
-          });
-        }
-      })
-      .catch(error => {
-        console.error('Σφάλμα στη φόρτωση των δεδομένων:', error);
-        bookContent.innerHTML = '<p>Σφάλμα στη φόρτωση των λεπτομερειών του βιβλίου.</p>';
-      });
-  });
-  
+  // 1. Παίρνουμε το 'id' από το query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const bookId = urlParams.get('id');
+
+  // 2. Επιλεγμένα στοιχεία στο DOM
+  const breadcrumbCurrent = document.getElementById('breadcrumbCurrent');
+  const bookTitleEl = document.getElementById('bookTitle');
+  const bookSubtitleEl = document.getElementById('bookSubtitle');
+  const bookImageEl = document.getElementById('bookImage');
+  const syllabusListEl = document.getElementById('syllabusList');
+  const contentsListEl = document.getElementById('contentsList');
+
+  // 3. Αν δεν έχουμε ID, βγάζουμε μήνυμα
+  if (!bookId) {
+    bookTitleEl.textContent = 'Δεν βρέθηκε βιβλίο';
+    return;
+  }
+
+  // 4. Φόρτωση του books.json (χρειάζεται να τρέχεις σε local server)
+  fetch('books.json')
+    .then(response => response.json())
+    .then(data => {
+      // 5. Εντοπίζουμε το βιβλίο με το id
+      const book = data.find(item => item.id === bookId);
+      if (!book) {
+        bookTitleEl.textContent = 'Το βιβλίο δεν υπάρχει στη λίστα.';
+        return;
+      }
+
+      // 6. Ενημερώνουμε το breadcrumb, τον τίτλο, υπότιτλο, εικόνα
+      breadcrumbCurrent.textContent = book.title || 'Λεπτομέρειες Βιβλίου';
+      bookTitleEl.textContent = book.title || 'Άγνωστος Τίτλος';
+      bookSubtitleEl.textContent = book.subtitle || '';
+      bookImageEl.src = book.image || 'images/placeholder.jpg';
+      bookImageEl.alt = book.title || 'Εικόνα Βιβλίου';
+
+      // 7. Γεμίζουμε τη λίστα “Ύλη που Καλύπτεται”
+      if (Array.isArray(book.syllabus)) {
+        syllabusListEl.innerHTML = '';
+        book.syllabus.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          syllabusListEl.appendChild(li);
+        });
+      }
+
+      // 8. Γεμίζουμε τη λίστα “Περιεχόμενα Συγγράμματος”
+      if (Array.isArray(book.contents)) {
+        contentsListEl.innerHTML = '';
+        book.contents.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          contentsListEl.appendChild(li);
+        });
+      }
+    })
+    .catch(error => {
+      console.error('Σφάλμα στη φόρτωση των βιβλίων:', error);
+      bookTitleEl.textContent = 'Σφάλμα κατά τη φόρτωση.';
+    });
+});
