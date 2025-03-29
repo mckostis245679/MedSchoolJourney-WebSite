@@ -1,9 +1,7 @@
-
 // script.js
 
-
 document.addEventListener("DOMContentLoaded", function() {
-  // Load the header if needed (similar method)
+  // 1. Load the header (if you have header-placeholder in your HTML)
   fetch('header.html')
     .then(response => response.text())
     .then(data => {
@@ -14,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .catch(error => console.error('Error loading header:', error));
 
-  // Load the footer from footer.html
+  // 2. Load the footer (if you have footer-placeholder in your HTML)
   fetch('footer.html')
     .then(response => response.text())
     .then(data => {
@@ -22,17 +20,17 @@ document.addEventListener("DOMContentLoaded", function() {
       if (footerPlaceholder) {
         footerPlaceholder.innerHTML = data;
       }
+      // After the footer is inserted, update the year
+      const yearElements = document.querySelectorAll("#year");
+      const currentYear = new Date().getFullYear();
+      yearElements.forEach(el => {
+        // This replaces <span id="year"></span> with the actual year
+        el.textContent = currentYear;
+      });
     })
     .catch(error => console.error('Error loading footer:', error));
 
-  // Auto-update footer year
-  const yearElements = document.querySelectorAll("#year");
-  const currentYear = new Date().getFullYear();
-  yearElements.forEach(el => el.textContent = currentYear);
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-  // Process each carousel on the page
+  // 3. Carousel logic for any carousels on the page
   const carousels = document.querySelectorAll('.carousel');
   carousels.forEach(carousel => {
     const images = carousel.querySelectorAll('.carousel-image');
@@ -40,26 +38,29 @@ document.addEventListener("DOMContentLoaded", function() {
     const nextButton = carousel.querySelector('.carousel-next');
     let currentIndex = 0;
 
-    // Function to show the image at the specified index
+    // Show image at a given index, hide others
     function showImage(index) {
       images.forEach((img, i) => {
         img.classList.toggle('active', i === index);
       });
     }
 
-    // Previous button click event
-    prevButton.addEventListener('click', function(e) {
-      e.stopPropagation();
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      showImage(currentIndex);
-    });
+    // If there's a previous button, wire it up
+    if (prevButton) {
+      prevButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+      });
+    }
 
-    // Next button click event
-    nextButton.addEventListener('click', function(e) {
-      e.stopPropagation();
-      currentIndex = (currentIndex + 1) % images.length;
-      showImage(currentIndex);
-    });
+    // If there's a next button, wire it up
+    if (nextButton) {
+      nextButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      });
+    }
   });
 });
-

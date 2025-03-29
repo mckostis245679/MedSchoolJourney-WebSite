@@ -10,11 +10,11 @@
     scroll-behavior: smooth;
   }
   body {
-    font-family: Arial, sans-serif; /* Replace with your chosen font */
+    font-family: Arial, sans-serif; /* Μπορείς να αντικαταστήσεις με την επιθυμητή γραμματοσειρά */
     line-height: 1.6;
     color: #333;
-    background-color: #f9f9f9;
-    padding-top: 134px; /* Space for fixed header */
+    background-color: #fafafa;
+    padding-top: 134px; /* Διάστημα για το fixed header */
   }
   
   /* Utility Classes */
@@ -27,7 +27,7 @@
     display: inline-block;
     padding: 0.75rem 1.5rem;
     text-decoration: none;
-    background-color: #0052cc; /* Primary color */
+    background-color: #f7b34e; /* Primary color */
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
@@ -42,8 +42,6 @@
     background-color: #0052cc;
     color: #fff;
     border-radius: 4px;
-    text-decoration: none;
-    display: inline-block;
   }
   .link-more {
     color: #0052cc;
@@ -55,13 +53,12 @@
   }
   
   /* =========================
-     HEADER STYLES – Always One Row
+     HEADER (SINGLE-BAR)
      ========================= */
   .main-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;  /* Space between brand and header container */
-    height: 134px;                   /* Fixed header height */
+    height: 134px; /* Μπορείς να το προσαρμόσεις */
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     font-size: 1.3rem;
@@ -70,15 +67,14 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    flex-wrap: nowrap;               /* Do not wrap items */
   }
   .brand {
+    background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 180px;                    /* Fixed width for logo area */
+    width: 180px;
     height: 100%;
-    background-color: #ffffff;
   }
   .brand .logo img {
     max-height: 110px;
@@ -88,18 +84,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex: 1;                         /* Take remaining horizontal space */
+    flex: 1;
     padding: 0 1rem;
-    flex-wrap: nowrap;               /* Keep items on one row */
   }
   .main-nav ul {
     display: flex;
-    align-items: center;
     list-style: none;
     gap: 1.5rem;
-    margin: 0;
-    padding: 0;
-    flex-wrap: nowrap;
   }
   .main-nav a {
     text-decoration: none;
@@ -107,16 +98,16 @@
     font-weight: 500;
     transition: color 0.2s ease;
   }
-  .main-nav a:hover,
+  .main-nav a:hover {
+    color: #1e8ccc;
+  }
   .main-nav a.active {
     color: #1e8ccc;
     font-weight: 600;
   }
   .social-icons {
     display: flex;
-    align-items: center;
     gap: 1rem;
-    flex-wrap: nowrap;
   }
   .social-icons img {
     width: 44px;
@@ -126,8 +117,10 @@
   /* =========================
      HERO SECTION
      ========================= */
+
+    
   .hero-section {
-    background: url('../images/layout/background2.png') center/cover no-repeat;
+    background: url('/images/layout/background1.jpg') center/cover no-repeat;
     min-height: 60vh;
     display: flex;
     align-items: center;
@@ -138,7 +131,10 @@
     content: "";
     background: rgba(0,0,0,0.4);
     position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
   .hero-content {
     position: relative;
@@ -147,113 +143,171 @@
     padding: 2rem;
   }
   .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 1rem;
+  }
+  .hero-content h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
   }
   .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
   }
   .hero-btn {
-    background-color: #ff7f50;
+    background-color: #f7b34e;
   }
   
   /* =========================
      ABOUT SECTION
      ========================= */
   .about-section {
-    background-color: #fff;
-    padding: 2rem 0;
+    padding: 3rem 0;
+    background-color: #f9f9f9;
+    text-align: center;
+    color: #333;
   }
   .about-section h2 {
+    font-size: 2rem;
     margin-bottom: 1rem;
+    color: #0e5968;
+  }
+  .about-section p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+  .about-section ul {
+    list-style: disc;
+    margin: 1rem auto;
+    max-width: 800px;
+    text-align: left;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .about-section ul li {
+    margin-bottom: 0.5rem;
   }
   
   /* =========================
-     CATEGORIES SECTION
+     SERVICES SECTION
      ========================= */
-  .categories-section {
-    padding: 2rem 0;
+  .services-section {
+    padding: 3rem 0;
+    background-color: #fff;
     text-align: center;
   }
-  .categories-grid {
+  .services-section h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #0e5968;
+  }
+  .services-section p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+  }
+  .services-grid {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .service-item {
+    background-color: #f1f1f1;
+    padding: 1.5rem;
+    border-radius: 6px;
+    text-align: left;
+  }
+  .service-item h3 {
+    font-size: 1.4rem;
+    color: #0e5968;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid #0e5968;
+    padding-bottom: 0.3rem;
+  }
+  .service-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .service-item ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  /* =========================
+     CONTACT SECTION
+     ========================= */
+  .contact-page-section {
+    background-color: #f9f9f9;
+    padding: 3rem 0;
+    margin-top: 2rem;
+    text-align: center;
+  }
+  .contact-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .contact-info {
+    flex: 1;
+    min-width: 280px;
+  }
+  .contact-info h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #0e5968;
+  }
+  .contact-info p {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .contact-form-wrapper {
+    flex: 2;
+    min-width: 300px;
+  }
+  .contact-form-wrapper h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #0e5968;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    margin-top: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
   }
-  .category-card {
-    background-color: #fff;
-    border-radius: 5px;
-    overflow: hidden;
-    padding: 1rem;
-    box-shadow: 0 0 8px rgba(0,0,0,0.05);
-    text-align: center;
-    transition: transform 0.2s ease;
+  .contact-form label {
+    font-weight: bold;
+    color: #333;
   }
-  .category-card:hover {
-    transform: translateY(-2px);
-  }
-  .category-card img {
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form textarea {
     width: 100%;
-    max-height: 150px;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-  }
-  .category-card h3 {
-    margin-bottom: 0.5rem;
-  }
-  .category-card p {
-    margin-bottom: 1rem;
-  }
-  
-  /* =========================
-     BENEFITS SECTION
-     ========================= */
-  .benefits-section {
-    background-color: #f2f2f2;
-    padding: 2rem 0;
-    text-align: center;
-  }
-  .benefits-grid {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    margin-top: 2rem;
-  }
-  .benefit-item {
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.04);
-  }
-  .benefit-item img {
-    width: 60px;
-    margin-bottom: 1rem;
-  }
-  .benefit-item h4 {
-    margin-bottom: 0.5rem;
-  }
-  
-  /* =========================
-     NEWSLETTER SECTION
-     ========================= */
-  .newsletter-section {
-    padding: 2rem 0;
-    text-align: center;
-    background-color: #e8e8e8;
-  }
-  .newsletter-form {
-    margin-top: 1rem;
-    display: inline-flex;
-    gap: 0.5rem;
-  }
-  .newsletter-form input[type="email"] {
-    padding: 0.5rem;
-    width: 250px;
+    padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  .contact-form button.btn {
+    background-color: #0e5968;
+    color: #fff;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .contact-form button.btn:hover {
+    background-color: #0a424f;
   }
   
   /* =========================
@@ -272,7 +326,9 @@
   .footer-col h4 {
     margin-bottom: 0.75rem;
   }
-  .footer-col p, .footer-col li, .footer-col a {
+  .footer-col p,
+  .footer-col li,
+  .footer-col a {
     color: #ddd;
     font-size: 0.95rem;
   }
@@ -300,18 +356,91 @@
   }
   .footer-social-icons a img {
     width: 24px;
-    height: auto;
   }
   
   /* =========================
-     PAGE HERO (subpages)
+     PAGE HERO (Subpages)
      ========================= */
   .page-hero {
-    background-color: #0052cc;
-    color: #fff;
-    padding: 3rem 1rem;
+    position: relative;
+    background: url("../images/hero-contact.jpg") center/cover no-repeat;
+    padding: 4rem 0;
     text-align: center;
+    /* Αντί για white, χρησιμοποιούμε το accent για τα κείμενα αν χρειαστεί, π.χ.:
+       color: #0e5968; */
+    color: #0e5968;
   }
+  .page-hero .container {
+    position: relative;
+    z-index: 1;
+  }
+  .page-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .page-hero p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0.5rem auto 0;
+  }
+  
+  /* =========================
+     NOTES SECTION (3 Cards)
+     ========================= */
+     .notes-section {
+      padding: 1rem 0 6rem 0; /* 3rem πάνω, 4rem κάτω */
+      text-align: center;
+    }
+.notes-section .container {
+  margin-top: 2rem;
+}
+.notes-grid {
+  display: grid;
+  gap: 2rem;
+  /* Αυτόματη προσαρμογή στη διάσταση οθόνης (responsive) */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 2rem;
+}
+.notes-card {
+  background-color: #ffffff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+  text-align: center;
+}
+.notes-card:hover {
+  transform: translateY(-3px);
+}
+.notes-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Καλύπτει όλη την κάρτα ως clickable */
+}
+.notes-card img {
+  width: 100%;
+  height: 240px;  /* Ρυθμίστε ανάλογα με το ύψος που θέλετε */
+  object-fit: cover; 
+  display: block;
+}
+.notes-card h2 {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  color: #0e5968;
+  padding: 0 1rem;
+}
+.notes-card:hover h2 {
+  color: #0052cc; /* Εναλλακτικά χρώμα hover */
+}
+
+/* Κείμενο στην κάρτα (προαιρετικό) */
+.notes-card p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0 1rem 1rem;
+  line-height: 1.4;
+}
   
   /* =========================
      COURSE CATEGORIES PAGE
@@ -336,260 +465,333 @@
      INQUIRY SECTION
      ========================= */
   .inquiry-section {
+    background-color: #f9f9f9;
     padding: 2rem 0;
-    background-color: #e8e8e8;
-  }
-  .inquiry-form label {
-    display: block;
-    margin: 0.5rem 0 0.25rem;
-  }
-  .inquiry-form input,
-  .inquiry-form textarea {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
-  /* =========================
-     CONTACT PAGE
-     ========================= */
-  .contact-page-section {
-    padding: 2rem 0;
-  }
-  .contact-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-  .contact-info h2, .contact-form-wrapper h2 {
-    margin-bottom: 1rem;
-  }
-  .contact-form label {
-    display: block;
-    margin: 0.5rem 0 0.25rem;
-  }
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    margin-bottom: 1rem;
-  }
-  
-  /* =========================
-     EKDOSEIS SECTION (Ebooks Grid)
-     ========================= */
-  .ekdoseis-section {
-    padding: 2rem 0;
-    text-align: center;
-  }
-  .ekdoseis-grid {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(4, 1fr);
     margin-top: 2rem;
   }
-  .publication-card {
-    background-color: #fff;
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 0 8px rgba(0,0,0,0.05);
-    text-align: center;
-    transition: transform 0.2s ease;
-  }
-  .publication-card:hover {
-    transform: translateY(-2px);
-  }
-  .publication-card img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    display: block;
-  }
-  .publication-card h3 {
-    margin: 0.75rem 0 0.5rem;
-    font-size: 1rem;
-    color: #333;
-  }
-  .publication-card p {
-    margin: 0 1rem 0.75rem;
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.4;
-  }
-  .publication-card .btn-sm {
-    margin-bottom: 1rem;
-    background-color: #0052cc;
-    color: #fff;
-    border-radius: 4px;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    display: inline-block;
-  }
-  .publication-card .btn-sm:hover {
-    opacity: 0.9;
-  }
-  .publication-card a {
-    display: block;
-    color: inherit;
-    text-decoration: none;
-  }
-  .publication-card a:hover {
-    opacity: 0.9;
-  }
-  
-  /* =========================
-     RESPONSIVE FOR EKDOSEIS
-     ========================= */
-  @media screen and (max-width: 992px) {
-    .ekdoseis-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media screen and (max-width: 576px) {
-    .ekdoseis-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  /* ======= Carousel Styles for Publication Cards (using dots) ======= */
-  .carousel {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    height: 0;
-    padding-bottom: 75%;
-    margin-bottom: 1rem;
-  }
-  .carousel-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .carousel-image.active {
-    opacity: 1;
-  }
-  .carousel-dots {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 10;
-  }
-  .carousel-dots .dot {
-    width: 12px;
-    height: 12px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  .carousel-dots .dot.active {
-    background-color: #fff;
-  }
-  
-  /* =========================
-     BOOK DETAIL SECTION (Template)
-     ========================= */
-  .book-detail-section {
-    padding: 1.5rem 0;
-  }
-  .book-main-title {
+  .inquiry-section h2 {
     font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 0.5rem;
+    color: #0e5968;
+    margin-bottom: 1rem;
   }
-  .book-subtitle {
-    font-size: 1.1rem;
-    color: #666;
+  .inquiry-section p {
     margin-bottom: 2rem;
+    line-height: 1.6;
   }
-  .book-layout {
+  .inquiry-form {
     display: flex;
-    gap: 2rem;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
   }
-  .book-left {
-    flex: 1;
+  .inquiry-form label {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
+  .inquiry-form input[type="text"],
+  .inquiry-form input[type="email"],
+  .inquiry-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  .inquiry-form button.btn {
+    background-color: #0e5968;
+    color: #fff;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .inquiry-form button.btn:hover {
+    background-color: #0a424f;
+  }
+
+  
+
+  /*============BOOK==============*/
+  /* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  background-color: #f4f4f4;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+.breadcrumb a {
+  color: #0052cc;
+  text-decoration: none;
+  font-weight: 500;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.breadcrumb-sep {
+  margin: 0 0.5rem;
+  color: #888;
+}
+.breadcrumb .current {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Ενότητα Λεπτομερειών Βιβλίου */
+.book-detail-section {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+/* Διάταξη βιβλίου */
+.book-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.book-left {
+  flex: 1;
+  min-width: 300px;
+}
+.book-right {
+  flex-basis: 300px;
+  text-align: center;
+}
+.book-right img {
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Λίστες εντός της ενότητας */
+.col-lists {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+.col-lists > div {
+  flex: 1;
+  min-width: 200px;
+}
+.col-lists h3 {
+  border-bottom: 2px solid #0e5968;
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.75rem;
+  color: #0e5968;
+}
+
+/* Responsive ρυθμίσεις */
+@media screen and (max-width: 768px) {
+  .book-layout {
+      flex-direction: column;
   }
   .col-lists {
-    display: flex;
-    gap: 2rem;
+      flex-direction: column;
   }
-  .syllabus-col, .contents-col {
-    flex: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* =========================
+     ACADEMIC WORK (Υπηρεσίες)
+     ========================= */
+  .academic-work {
+    margin: 3rem 0;
   }
-  .syllabus-col h3, .contents-col h3 {
-    margin-bottom: 0.5rem;
-    color: #444;
-    font-size: 1.1rem;
-    font-weight: 600;
+  .academic-work h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #0e5968;
   }
-  .syllabus-col ul, .contents-col ul {
+  .academic-work p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  .academic-list {
     list-style: none;
-    padding: 0;
+    margin-left: 0;
+    padding-left: 0;
   }
-  .syllabus-col li, .contents-col li {
-    margin-bottom: 0.5rem;
-    color: #555;
+  .academic-list li {
+    margin-bottom: 0.75rem;
+    padding-left: 25px;
+    position: relative;
   }
-  .book-right {
-    width: 400px;
-    text-align: center;
+  .academic-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #0e5968;
+    font-weight: bold;
   }
-  .book-right img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  }
+
+
+
+
+  /* =========================
+     ΕΚΔΟΣΕΙΣ SECTION (Publications)
+     ========================= */
+     .ekdoseis-section {
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .ekdoseis-section h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      color: #0e5968;
+    }
+    .ekdoseis-section p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #555;
+    }
+    
+    /* Grid που περιέχει τις κάρτες των βιβλίων */
+    .ekdoseis-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 2rem;
+    }
+    
+/* Κάρτα βιβλίου */
+/* Κάρτα βιβλίου */
+.publication-card {
+  background-color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.2s ease;
+  /* Αφαιρούμε το position: relative
+     ώστε να μην υπάρχει απόλυτη τοποθέτηση του κουμπιού */
+}
+.publication-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Αφαίρεση υπογράμμισης από τους συνδέσμους */
+.publication-card a {
+  text-decoration: none;
+  color: inherit;
+}
+.publication-card a:hover {
+  text-decoration: none; /* Παραμένει χωρίς υπογράμμιση στο hover */
+}
+
+/* Εικόνα βιβλίου */
+.publication-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Τίτλος και περιγραφή βιβλίου */
+.publication-card h3 {
+  margin: 0.75rem 0 0.5rem;
+  font-size: 1rem;
+  color: #333;
+}
+.publication-card p {
+  margin: 0 1rem 0.75rem;
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Κουμπί "Περισσότερα" στην αρχική (προηγούμενη) μορφή του */
+.publication-card .btn-sm {
+  margin-bottom: 1rem;
+  background-color: #0e5968;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s ease;
+  /* Καμία absolute/fixed τοποθέτηση */
+  position: static;
+  transform: none;
+}
+.publication-card .btn-sm:hover {
+  opacity: 0.9;
+}
+
+
+    
+    /* Responsive ρυθμίσεις για το grid */
+    @media screen and (max-width: 992px) {
+      .ekdoseis-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media screen and (max-width: 576px) {
+      .ekdoseis-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   
   /* =========================
-     RESPONSIVE FOR BOOK DETAIL
+     RESPONSIVE ADJUSTMENTS
      ========================= */
   @media screen and (max-width: 768px) {
-    .book-layout {
-      flex-direction: column;
+    .main-header {
+      height: auto;
+      flex-wrap: wrap;
     }
-    .book-right {
+    .brand {
       width: 100%;
-      margin-top: 1rem;
+      justify-content: center;
+      height: auto;
+      padding: 0.5rem 0;
     }
-    .col-lists {
+    .header-container {
+      width: 100%;
       flex-direction: column;
-    }
-  }
-  
-  /* =========================
-     PHONE-SPECIFIC OVERRIDES
-     ========================= */
-  @media screen and (max-width: 576px) {
-    /* Header: Ensure all header elements remain in one row */
-    .main-header,
-    .header-container,
-    .main-nav ul,
-    .social-icons {
-      flex-wrap: nowrap;
+      align-items: center;
+      padding: 1rem;
     }
     .main-nav ul {
-      gap: 1rem;
+      flex-direction: column;
+      gap: 0.75rem;
     }
-    .main-nav a {
-      font-size: 1rem;
+    .social-icons {
+      margin-top: 1rem;
     }
-    /* eBooks Grid: Force 2 columns per row on phones */
-    .ekdoseis-grid {
-      grid-template-columns: repeat(2, 1fr);
+    .contact-layout {
+      grid-template-columns: 1fr;
+    }
+    .benefits-grid,
+    .categories-grid,
+    .categories-list {
+      grid-template-columns: 1fr;
     }
   }
   

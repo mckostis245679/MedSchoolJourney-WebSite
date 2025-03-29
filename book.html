@@ -8,51 +8,53 @@
 </head>
 <body>
 
-  <!-- Header placeholder, αν χρησιμοποιείς κοινό header -->
+  <!-- Header placeholder (φορτώνεται δυναμικά από script) -->
   <div id="header-placeholder"></div>
 
-  <!-- Breadcrumb -->
+  <!-- Breadcrumb Section -->
   <section class="breadcrumb">
     <div class="container">
-      <a href="ekdoseis.html">e-Books</a>
+      <a href="notes.html">e-Books</a>
+      <span class="breadcrumb-sep">/</span>
+      <a id="breadcrumbCategory" class="breadcrumb-category" href="#">Κατηγορία</a>
       <span class="breadcrumb-sep">/</span>
       <span class="current" id="breadcrumbCurrent">Τίτλος Βιβλίου</span>
     </div>
   </section>
 
-  <!-- Ενότητα Λεπτομερειών Βιβλίου με Δύο Στήλες -->
+  <!-- Ενότητα Λεπτομερειών Βιβλίου -->
   <section class="book-detail-section container">
     <div class="book-layout">
-      <!-- Αριστερή Στήλη: Δύο υπο-στήλες (Ύλη & Περιεχόμενα) -->
+      <!-- Αριστερή Στήλη: Πληροφορίες βιβλίου και λίστες -->
       <div class="book-left">
         <h1 class="book-main-title" id="bookTitle">[Τίτλος Βιβλίου]</h1>
         <p class="book-subtitle" id="bookSubtitle">[Υπότιτλος]</p>
         <div class="col-lists">
-          <!-- Ύλη που Καλύπτεται -->
+          <!-- Ύλη που καλύπτεται -->
           <div class="syllabus-col">
-            <h3>Ύλη που Καλύπτεται</h3>
+            <h3>ΠΕΡΙΕΧΟΜΕΝΑ e-Book</h3>
             <ul id="syllabusList">
-              <!-- Θα γεμίσει δυναμικά με <li> -->
+              <!-- Δυναμική ενημέρωση με στοιχεία -->
             </ul>
           </div>
           <!-- Περιεχόμενα Συγγράμματος -->
           <div class="contents-col">
-            <h3>Περιεχόμενα Συγγράμματος</h3>
+            <h3>Περισσότερα</h3>
             <ul id="contentsList">
-              <!-- Θα γεμίσει δυναμικά με <li> -->
+              <!-- Δυναμική ενημέρωση με στοιχεία -->
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Δεξιά Στήλη: Εικόνα Βιβλίου -->
+      <!-- Δεξιά Στήλη: Εικόνα βιβλίου -->
       <div class="book-right">
         <img id="bookImage" src="images/placeholder.jpg" alt="Εικόνα Βιβλίου">
       </div>
     </div>
   </section>
 
-  <!-- Footer placeholder, αν χρησιμοποιείς κοινό footer -->
+  <!-- Footer placeholder (φορτώνεται δυναμικά από script) -->
   <div id="footer-placeholder"></div>
 
   <!-- Scripts -->
