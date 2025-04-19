@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox, filedialog, ttk
 import json
+import subprocess
+import glob
 import os
 
 BOOKS_JSON = "books.json"
@@ -24,14 +26,47 @@ def load_books():
         books = []
 
 def save_changes():
-    """Αποθηκεύει το 'books' σε JSON και παράγει τα τρία αρχεία HTML για κάθε κατηγορία."""
+    """Αποθηκεύει το 'books' σε JSON, παράγει τα HTML και τα σπρώχνει στο GitHub."""
     try:
+        # 1) Save JSON
         with open(BOOKS_JSON, "w", encoding="utf-8") as f:
             json.dump(books, f, ensure_ascii=False, indent=4)
+
+        # 2) Regenerate HTML pages
         generate_all_html()
-        messagebox.showinfo("Αποθηκεύτηκε", "Όλες οι αλλαγές αποθηκεύτηκαν και οι σελίδες δημιουργήθηκαν με επιτυχία.")
+
+        # 3) Git add/commit/push
+        #    Collect the JSON file plus every .html in cwd
+        files_to_commit = [BOOKS_JSON] + glob.glob("*.html")
+
+        # Stage
+        subprocess.run(["git", "add"] + files_to_commit, check=True)
+
+        # Commit
+        subprocess.run([
+            "git", "commit",
+            "-m", "Auto-update books JSON and HTML pages"
+        ], check=True)
+
+        # Push (adjust branch name if needed)
+        subprocess.run(["git", "push", "origin", "main"], check=True)
+
+        # Success message
+        messagebox.showinfo(
+            "Αποθηκεύτηκε",
+            "Όλες οι αλλαγές αποθηκεύτηκαν και οι σελίδες δημιουργήθηκαν & ανέβηκαν στο GitHub."
+        )
+
+    except subprocess.CalledProcessError as git_err:
+        messagebox.showerror(
+            "Git Σφάλμα",
+            f"Η λειτουργία Git απέτυχε:\n{git_err}"
+        )
     except Exception as e:
-        messagebox.showerror("Σφάλμα", f"Αποτυχία αποθήκευσης: {e}")
+        messagebox.showerror(
+            "Σφάλμα",
+            f"Αποτυχία αποθήκευσης ή δημιουργίας: {e}"
+        )
 
 def generate_all_html():
     """Δημιουργεί τα HTML αρχεία για τις κατηγορίες: academic, clinical και kataktiries."""
