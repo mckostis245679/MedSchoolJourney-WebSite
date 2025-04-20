@@ -26,7 +26,7 @@ def load_books():
         books = []
 
 def save_changes():
-    """Αποθηκεύει το 'books' σε JSON, παράγει τα HTML και τα σπρώχνει στο GitHub."""
+    """Αποθηκεύει το 'books' σε JSON, παράγει τα HTML, βγάζει pull και τα σπρώχνει στο GitHub."""
     try:
         # 1) Save JSON
         with open(BOOKS_JSON, "w", encoding="utf-8") as f:
@@ -35,26 +35,25 @@ def save_changes():
         # 2) Regenerate HTML pages
         generate_all_html()
 
-        # 3) Git add/commit/push
-        #    Collect the JSON file plus every .html in cwd
-        files_to_commit = [BOOKS_JSON] + glob.glob("*.html")
+        # 3) Git pull to sync remote changes
+        subprocess.run(["git", "pull", "--rebase", "origin", "main"], check=True)
 
-        # Stage
+        # 4) Stage JSON + HTML files
+        files_to_commit = [BOOKS_JSON] + glob.glob("*.html")
         subprocess.run(["git", "add"] + files_to_commit, check=True)
 
-        # Commit
+        # 5) Commit
         subprocess.run([
             "git", "commit",
             "-m", "Auto-update books JSON and HTML pages"
         ], check=True)
 
-        # Push (adjust branch name if needed)
+        # 6) Push back up
         subprocess.run(["git", "push", "origin", "main"], check=True)
 
-        # Success message
         messagebox.showinfo(
             "Αποθηκεύτηκε",
-            "Όλες οι αλλαγές αποθηκεύτηκαν και οι σελίδες δημιουργήθηκαν & ανέβηκαν στο GitHub."
+            "Όλες οι αλλαγές αποθηκεύτηκαν, εναρμονίστηκαν με το απομακρυσμένο και ανέβηκαν."
         )
 
     except subprocess.CalledProcessError as git_err:
