@@ -431,7 +431,7 @@ def main():
 
     # --- Save Changes Button (κάτω αριστερά ή σε νέα γραμμή) ---
     btn_save = tk.Button(root, text="💾 Save Changes", command=save_changes, bg="#4CAF50", fg="white", font=("Helvetica", 11, "bold"))
-    btn_save.grid(row=2, column=0, padx=10, pady=20, sticky="w")
+    btn_save.grid(row=2, column=1, padx=10, pady=20, sticky="w")
 
     load_books()
     refresh_book_list()
