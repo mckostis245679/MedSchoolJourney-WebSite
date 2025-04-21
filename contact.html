@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Επικοινωνία – MedSchool Journey</title>
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
 </head>
 <body>
 
@@ -33,7 +36,7 @@
       <!-- Contact Form -->
       <div class="contact-form-wrapper">
         <h2>Στείλτε μας ένα μήνυμα</h2>
-        <form class="contact-form" action="#" method="POST">
+        <form id="contact-form">
           <label for="cname">Όνομα:</label>
           <input type="text" id="cname" name="cname" required>
 
@@ -43,7 +46,7 @@
           <label for="cmessage">Μήνυμα:</label>
           <textarea id="cmessage" name="cmessage" rows="5" required></textarea>
 
-          <button type="submit" class="btn">Αποστολή</button>
+          <button id="button" type="submit" class="btn">Αποστολή</button>
         </form>
       </div>
     </div>
@@ -52,6 +55,43 @@
   <!-- Footer (dynamic placeholder) -->
   <div id="footer-placeholder"></div>
 
+  <!-- Inline EmailJS code -->
+  <script>
+    // 0) EmailJS Public Key + Service & Template IDs
+    emailjs.init("rQ6jHP2udsVi0SPDh");
+    const SERVICE_ID  = "service_tnlv7fn";
+    const TEMPLATE_ID = "template_kfos0wa";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contact-form");
+      const btn  = document.getElementById("button");
+      if (!form || !btn) return;
+
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        // Feedback
+        btn.disabled = true;
+        btn.textContent = "Αποστολή...";
+
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
+          .then(() => {
+            alert("Το μήνυμά σας εστάλη με επιτυχία!");
+            form.reset();
+          })
+          .catch(err => {
+            console.error("EmailJS Error:", err);
+            alert("Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε ξανά.");
+          })
+          .finally(() => {
+            btn.disabled = false;
+            btn.textContent = "Αποστολή";
+          });
+      });
+    });
+  </script>
+
+  <!-- External script.js for header/footer loading -->
   <script src="js/script.js"></script>
 </body>
 </html>
