@@ -32,3 +32,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 });
+
+function sendMail() {
+  var params = {
+    email: document.getElementById("email").value,
+    message: document.getElementById("message").value,
+  };
+
+  const serviceID = "service_hecci3k";
+  const templateID = "template_kfos0wa";
+
+    emailjs.send(serviceID, templateID, params)
+    .then(res=>{
+        document.getElementById("email").value = "";
+        document.getElementById("message").value = "";
+        console.log(res);
+        alert("Your message sent successfully!!")
+
+    })
+    .catch(err=>console.log(err));
+
+}
