@@ -41,14 +41,23 @@ function sendMail() {
 
   const serviceID = "service_hecci3k";
   const templateID = "template_kfos0wa";
+  const btn = document.getElementById('sendBtn');
+
+
+  // Αν είναι ήδη disabled, βγαίνουμε
+  if (btn.disabled) return;
+  
+  // Δείχνουμε ενδεικτικά ότι στέλνουμε (προαιρετικό)
+  btn.textContent = 'Sending…';
+  btn.disabled = true; 
 
     emailjs.send(serviceID, templateID, params)
     .then(res=>{
         document.getElementById("email").value = "";
         document.getElementById("message").value = "";
-        console.log(res);
-        alert("Your message sent successfully!!")
-
+        //console.log(res);
+        //alert("Your message sent successfully!!")
+        btn.textContent = 'Email sent';
     })
     .catch(err=>console.log(err));
 

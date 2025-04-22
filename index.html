@@ -6,6 +6,17 @@
   <title>MedSchool Journey – Αρχική</title>
   <!-- Σύνδεση με το αρχείο CSS -->
   <link rel="stylesheet" href="css/style.css">
+  <script src="script.js"></script>
+
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+  ></script>
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("rQ6jHP2udsVi0SPDh");
+    })();
+  </script>
 </head>
 <body>
 
@@ -83,17 +94,24 @@
       <h2>ΕΠΙΚΟΙΝΩΝΙΑ</h2>
       <p>Είστε έτοιμοι να ξεκινήσουμε; Συμπληρώστε τα στοιχεία επικοινωνίας σας!</p>
       <p>Εδώ στο MedSchool Journey είμαστε πάντα σε ετοιμότητα για οποιαδήποτε απορία ή διευκρίνιση!</p>
-      <form action="contact.php" method="POST" class="contact-form">
-        <label for="name">Όνομα:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="message">Μήνυμα:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-        
-        <button type="submit" class="btn">Αποστολή</button>
+      <form class="contact-form" onsubmit="sendMail(); return false;">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter email"
+          required
+        />
+
+        <label for="message">Μήνυμα</label>
+        <textarea
+          id="message"
+          rows="5"
+          placeholder="Enter your message"
+          required
+        ></textarea>
+
+        <button id="sendBtn" class="btn" type="submit">Αποστολή</button>
       </form>
     </div>
   </section>
