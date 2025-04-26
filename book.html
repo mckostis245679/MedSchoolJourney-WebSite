@@ -6,7 +6,6 @@
   <title>Λεπτομέρειες Βιβλίου</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="script.js"></script>
-
   <script
     type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
@@ -19,7 +18,7 @@
 </head>
 <body>
 
-  <!-- Header placeholder (φορτώνεται δυναμικά από script) -->
+  <!-- Header placeholder -->
   <div id="header-placeholder"></div>
 
   <!-- Breadcrumb Section -->
@@ -36,7 +35,7 @@
   <!-- Ενότητα Λεπτομερειών Βιβλίου -->
   <section class="book-detail-section container">
     <div class="book-layout">
-      <!-- Αριστερή Στήλη: Πληροφορίες βιβλίου και λίστες -->
+      <!-- Αριστερή Στήλη: Τίτλος, Υπότιτλος, Λίστες -->
       <div class="book-left">
         <h1 class="book-main-title" id="bookTitle">[Τίτλος Βιβλίου]</h1>
         <p class="book-subtitle" id="bookSubtitle">[Υπότιτλος]</p>
@@ -45,16 +44,10 @@
           <div class="syllabus-col">
             <h3>ΠΕΡΙΕΧΟΜΕΝΑ e-Book</h3>
             <ul id="syllabusList">
-              <!-- Δυναμική ενημέρωση με στοιχεία -->
+              <!-- Δυναμική ενημέρωση -->
             </ul>
           </div>
-          <!-- Περιεχόμενα Συγγράμματος -->
-          <div class="contents-col">
-            <h3>Περισσότερα</h3>
-            <ul id="contentsList">
-              <!-- Δυναμική ενημέρωση με στοιχεία -->
-            </ul>
-          </div>
+          
         </div>
       </div>
 
@@ -63,11 +56,18 @@
         <img id="bookImage" src="images/placeholder.jpg" alt="Εικόνα Βιβλίου">
       </div>
     </div>
+
+    <!-- Παράγραφος “Περισσότερα” κάτω από τις δύο στήλες -->
+    <div class="book-more">
+      <h2>Περισσότερα</h2>
+      <p id="contentsList">
+        <!-- Εδώ προβάλλεται η περίληψη ή το επιπλέον κείμενο του βιβλίου -->
+      </p>
+    </div>
   </section>
 
-
-   <!-- ========== ΕΠΙΚΟΙΝΩΝΙΑ ========== -->
-   <section class="inquiry-section">
+  <!-- ========== ΕΠΙΚΟΙΝΩΝΙΑ ========== -->
+  <section class="inquiry-section">
     <div class="container">
       <h2>ΕΠΙΚΟΙΝΩΝΙΑ</h2>
       <p>Είστε έτοιμοι να ξεκινήσουμε; Συμπληρώστε τα στοιχεία επικοινωνίας σας!</p>
@@ -93,7 +93,7 @@
     </div>
   </section>
 
-  <!-- Footer placeholder (φορτώνεται δυναμικά από script) -->
+  <!-- Footer placeholder -->
   <div id="footer-placeholder"></div>
 
   <!-- Scripts -->
