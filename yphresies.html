@@ -11,6 +11,17 @@
   <link rel="manifest" href="favicon_io/site.webmanifest">
   <!-- Link your main CSS -->
   <link rel="stylesheet" href="css/style.css">
+<!-- Email js code-->
+  <script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+></script>
+<script type="text/javascript">
+  (function () {
+    emailjs.init("rQ6jHP2udsVi0SPDh");
+  })();
+</script>
+
 </head>
 <body>
 
@@ -42,28 +53,29 @@
     </section>
   </main>
 
-<!-- Προαιρετικά, μια φόρμα επικοινωνίας/ερώτησης στο τέλος της σελίδας -->
+<!-- ========== ΕΠΙΚΟΙΝΩΝΙΑ ========== -->
 <section class="inquiry-section">
   <div class="container">
-    <h2>Ενδιαφέρεσαι για κάτι συγκεκριμένο;</h2>
-    <p>
-      Ενημέρωσέ μας για τα θέματα στα οποία χρειάζεσαι βοήθεια, ώστε να
-      προσαρμόσουμε κατάλληλα το υλικό!
-    </p>
-    <form class="inquiry-form" action="#" method="POST">
-      <label for="name">Όνομα:</label>
-      <input type="text" id="name" name="name" required />
+    <h2>Ενδιαφέρεστε για κάτι συγκεκριμένο;</h2>
+    <p>Συμπληρώστε την παρακάτω φόρμα, ενημερώστε μας για τα θέματα στα οποία χρειάζεστε βοήθεια και θα επικοινωνήσουμε μαζί σας σύντομα.</p>
+    <form class="contact-form" onsubmit="sendMail(); return false;">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter email"
+        required
+      />
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
+      <label for="message">Μήνυμα</label>
+      <textarea
+        id="message"
+        rows="5"
+        placeholder="Enter your message"
+        required
+      ></textarea>
 
-      <label for="course">Μάθημα/Θεματική Ενότητα:</label>
-      <input type="text" id="course" name="course" required />
-
-      <label for="message">Λεπτομέρειες:</label>
-      <textarea id="message" name="message" rows="4"></textarea>
-
-      <button type="submit" class="btn">Αποστολή Αιτήματος</button>
+      <button id="sendBtn" class="btn" type="submit">Αποστολή</button>
     </form>
   </div>
 </section>
