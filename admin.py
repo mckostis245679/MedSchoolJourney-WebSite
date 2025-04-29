@@ -39,7 +39,7 @@ def save_changes():
         subprocess.run(["git", "pull", "--rebase", "origin", "main"], check=True)
 
         # 4) Stage JSON + HTML files
-        files_to_commit = [BOOKS_JSON] + glob.glob("*.html")
+        files_to_commit = [BOOKS_JSON] + glob.glob("*.html") + ["images/"]
         subprocess.run(["git", "add"] + files_to_commit, check=True)
 
         # 5) Commit
