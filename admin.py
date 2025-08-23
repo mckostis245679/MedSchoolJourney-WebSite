@@ -35,8 +35,6 @@ def save_changes():
         # 2) Regenerate HTML pages
         generate_all_html()
 
-        # 3) Git pull to sync remote changes
-        subprocess.run(["git", "pull", "--rebase", "origin", "main"], check=True)
 
         # 4) Stage JSON + HTML files
         files_to_commit = [BOOKS_JSON] + glob.glob("*.html") + ["images/"]
